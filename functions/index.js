@@ -2,6 +2,7 @@ const functions = require('firebase-functions');
 const firebase = require('firebase-admin');
 const express = require('express');
 const bodyParser = require('body-parser');
+const moment = require('moment');
 const validator = require('express-validator');
 const engines = require('consolidate');
 const hbs = require('handlebars');
@@ -42,14 +43,15 @@ app.get('/info', (request, response) => {
 
 app.post('/calcWeights', (request, response) => {
    console.log(request.body);
-   //var mwt = calculator.MWT(request.body);
+   var mwt = calculator.MWT(request.body);
+   request.body.mww = mwt;
    var weightClasses = getWeightClasses();
-   calculator.calculateDates(weightClasses);
+   var results = calculator.calculateDates(weightClasses, request.body);
 
-   var weight1 = {"class": 120, "date":"11/20/2017"};
-   var weight2 = {"class": 113, "date": "12/10/2017"};
-
-   var results  = [weight1, weight2];
+   // var weight1 = {"class": 120, "date":"11/20/2017"};
+   // var weight2 = {"class": 113, "date": "12/10/2017"};
+   //
+   // var results  = [weight1, weight2];
 
    response.render('results', {results});
 });
