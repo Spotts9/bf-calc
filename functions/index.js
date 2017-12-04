@@ -45,6 +45,7 @@ app.post('/calcWeights', (request, response) => {
    console.log(request.body);
    var mwt = calculator.MWT(request.body);
    request.body.mww = mwt;
+   var name = request.body.name;
    var weightClasses = getWeightClasses();
    var results = calculator.calculateDates(weightClasses, request.body);
 
@@ -53,7 +54,7 @@ app.post('/calcWeights', (request, response) => {
    //
    // var results  = [weight1, weight2];
 
-   response.render('results', {results});
+   response.render('results', {results, mwt, name});
 });
 exports.app = functions.https.onRequest(app);
 // // Create and Deploy Your First Cloud Functions
