@@ -52,8 +52,10 @@ app.get('/info', (request, response) => {
 }
 
 function getWeightClasses(){
-  const weights = [106,113,120,126,132,138,145,152,160,170,182,195,220,285];
-  return weights;
+  // const weights = [106,113,120,126,132,138,145,152,160,170,182,195,220,285];
+  const boys = [ 106,113,120,126,132,138,144,150,157,165,175,190,215,285];
+  const girls = [ 100,105,110,115,120,125,130,135,140,145,155,170,190,235];
+  return boys;
 }
 
   exports.app = functions.https.onRequest(app);
