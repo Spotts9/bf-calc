@@ -56,6 +56,7 @@ var calculator = {
          var makeDate = byDate.clone();
          validDates.push(new MilestoneDate(weightClasses[curIndex], makeDate.add(days, 'days').format("MM/DD/YYYY")));  // Add to the list of Weights and dates
          curIndex --;  //move down one weight Class
+         days--;
        }
        else{
          tempWeight -= lossPerDay;  //reduce weight by the amount allowed per day;
